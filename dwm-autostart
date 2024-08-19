@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# start dwm
+compton &
+nitrogen --restore &
+pacmd set-default-source alsa_input.pci-0000_00_1f.3.analog-stereo &
+
+/usr/local/bin/dwm-fillbar &
+
+exec /usr/local/bin/dwm

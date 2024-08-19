@@ -1,0 +1,41 @@
+#!/bin/sh
+
+
+getDate()
+{
+	echo "$(date "+%a %m-%d-%y %T")"
+}
+
+getAudio()
+{
+	STATUS=$(amixer sget Master | tail -n1 | sed -r "s/.*\[(.*)\]/\1/")
+	VOL=$(amixer get Master | tail -n1 | sed -r "s/.*\[(.*)%\].*/\1/")
+
+	if [ "$STATUS" = "off" ]; then
+                echo "Mute"
+        else
+		echo "Vol: $VOL%"
+        fi
+}
+
+getKB()
+{
+	echo "$(setxkbmap -query | awk '/layout/{print $2}')"
+}
+
+getVPN()
+{
+	VPN=$(nmcli -a | grep 'VPN connection' | sed -e 's/\( VPN connection\)*$//g')
+	if [ "$VPN" != "" ]; then
+		echo " VPN: $VPN |"
+	fi
+}
+
+
+
+while true
+do
+	
+	xsetroot -name " $(getKB) | $(getAudio) |$(getVPN) $(getDate)"
+	sleep 0.5
+done
