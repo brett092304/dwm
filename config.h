@@ -100,7 +100,7 @@ static const Key keys[] = {
 	{0,                             XF86XK_AudioMute,        spawn,          {.v = mutevol } },
 
 	{ MODKEY|ShiftMask,             XK_s,                    spawn,          SHCMD("shutdown now") },
-	{ MODKEY|ShiftMask,             XK_r,                    spawn,          SHCMD("reboot now") },
+	{ MODKEY|ShiftMask,             XK_r,                    spawn,          SHCMD("reboot") },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
