@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Name=DWM Session
+Exec=/usr/local/bin/dwm-autostart
+Icon=
+Type=XSession
+DesktopNames=DWM
