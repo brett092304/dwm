@@ -17,8 +17,8 @@
       "-DXINERAMA",
       "drw.c"
     ],
-    "directory": "/home/horizon/Dev/src-builds/dwm/dwm",
-    "file": "/home/horizon/Dev/src-builds/dwm/dwm/drw.c"
+    "directory": "/home/brett/Dev/src-builds/dwm/dwm.github",
+    "file": "/home/brett/Dev/src-builds/dwm/dwm.github/drw.c"
   },
   {
     "arguments": [
@@ -38,8 +38,8 @@
       "-DXINERAMA",
       "dwm.c"
     ],
-    "directory": "/home/horizon/Dev/src-builds/dwm/dwm",
-    "file": "/home/horizon/Dev/src-builds/dwm/dwm/dwm.c"
+    "directory": "/home/brett/Dev/src-builds/dwm/dwm.github",
+    "file": "/home/brett/Dev/src-builds/dwm/dwm.github/dwm.c"
   },
   {
     "arguments": [
@@ -59,7 +59,7 @@
       "-DXINERAMA",
       "util.c"
     ],
-    "directory": "/home/horizon/Dev/src-builds/dwm/dwm",
-    "file": "/home/horizon/Dev/src-builds/dwm/dwm/util.c"
+    "directory": "/home/brett/Dev/src-builds/dwm/dwm.github",
+    "file": "/home/brett/Dev/src-builds/dwm/dwm.github/util.c"
   }
 ]
