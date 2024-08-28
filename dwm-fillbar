@@ -12,10 +12,10 @@ getAudio()
 	VOL=$(amixer get Master | tail -n1 | sed -r "s/.*\[(.*)%\].*/\1/")
 
 	if [ "$STATUS" = "off" ]; then
-                echo "Mute"
-        else
+    	echo "Mute"
+    else
 		echo "Vol: $VOL%"
-        fi
+    fi
 }
 
 getKB()
@@ -31,11 +31,21 @@ getVPN()
 	fi
 }
 
+getBattery()
+{
+	BATCHARGE=$(cat /sys/class/power_supply/BAT0/capacity)
+	BATSTATUS=$(cat /sys/class/power_supply/BAT0/status)
 
+	if [ "$BATSTATUS" == "Discharging" ]; then
+		echo "Bat: $BATCHARGE%"
+	else
+		echo "Charging"
+	fi
+}
 
 while true
 do
 	
-	xsetroot -name " $(getKB) | $(getAudio) |$(getVPN) $(getDate)"
+	xsetroot -name " $(getKB) | $(getAudio) | $(getBattery) |$(getVPN) $(getDate)"
 	sleep 0.5
 done
