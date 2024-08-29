@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 getDate()
 {
 	echo "$(date "+%a %m-%d-%y %T")"
@@ -35,15 +34,24 @@ getBattery()
 {
 	BATCHARGE=$(cat /sys/class/power_supply/BAT0/capacity)
 	BATSTATUS=$(cat /sys/class/power_supply/BAT0/status)
-
-	if [ "$BATSTATUS" != "Charging" ]; then
-		echo "Bat: $BATCHARGE%"
-	else
+	if [ "$BATSTATUS" == "Charging" ]; then
 		if [ "$BATCHARGE" != "100" ]; then
 			echo "Charging $BATCHARGE%"
 		fi
+	else
+		echo "Bat: $BATCHARGE%"
 	fi
 }
+
+parallelize()
+{
+	while true
+	do
+		#getBattery &
+		sleep 2
+	done
+}
+#parallelize &
 
 while true
 do
