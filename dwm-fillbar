@@ -33,25 +33,8 @@ getVPN()
 getBattery()
 {
 	BATCHARGE=$(cat /sys/class/power_supply/BAT0/capacity)
-	BATSTATUS=$(cat /sys/class/power_supply/BAT0/status)
-	if [ "$BATSTATUS" == "Charging" ]; then
-		if [ "$BATCHARGE" != "100" ]; then
-			echo "Charging $BATCHARGE%"
-		fi
-	else
-		echo "Bat: $BATCHARGE%"
-	fi
+	echo "Bat: $BATCHARGE%"
 }
-
-parallelize()
-{
-	while true
-	do
-		#getBattery &
-		sleep 2
-	done
-}
-#parallelize &
 
 while true
 do
