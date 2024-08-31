@@ -31,11 +31,26 @@ getVPN()
 	fi
 }
 
-
+getNetwork()
+{
+	CONNAME=$(nmcli -t | grep 'Wired Connection' | awk '{print $1}')
+	if [ "$CONNAME" == "" ]; then
+		CONNAME=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -c 5-)
+		if [ "$CONNAME" == "" ]; then
+			echo "Offline"
+		else
+			IP=$(nmcli -a | grep 'inet4' | awk 'NR==1{print $2}' | cut -d '/' -f 1)
+			echo "Wifi: $CONNAME $IP"
+		fi
+	else
+		IP=$(nmcli -a | grep 'inet4' | awk 'NR==1{print $2}' | cut -d '/' -f 1)
+		echo "$CONNAME $IP"
+	fi
+}
 
 while true
 do
 	
-	xsetroot -name " $(getKB) | $(getAudio) |$(getVPN) $(getDate)"
+	xsetroot -name " $(getKB) | $(getAudio) |$(getVPN) $(getNetwork) | $(getDate)"
 	sleep 0.5
 done
