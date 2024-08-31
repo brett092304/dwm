@@ -19,29 +19,28 @@ Afterwards enter the following command to build and install dwm (if
 necessary as root):
 
     make clean install
+    
+Then enter the following commands to copy dwm-autostart and dwm-fillbar to /usr/local/bin:
+
+    cp dwm-autostart /usr/local/bin/
+    cp dwm-fillbar /usr/local/bin/
+
+Note: You may need to make dwm-autostart and dwm-fillbar executable
+
+If you are running a Display Manger simply copy dwm.desktop to /usr/share/xsessions/:
+
+    cp dwm.desktop /usr/share/xsessions/
+
+If you are **NOT** using a Display Manager then you already know what you are doing
 
 
 Running dwm
 -----------
-Add the following line to your .xinitrc to start dwm using startx:
+If you are using a Display Manager then the session "DWM" will be avaible to start at the login screen
 
-    exec dwm
+To start dwm from the console run:
 
-In order to connect dwm to a specific display, make sure that
-the DISPLAY environment variable is set correctly, e.g.:
-
-    DISPLAY=foo.bar:1 exec dwm
-
-(This will start dwm on display :1 of the host foo.bar.)
-
-In order to display status info in the bar, you can do something
-like this in your .xinitrc:
-
-    while xsetroot -name "`date` `uptime | sed 's/.*,//'`"
-    do
-    	sleep 1
-    done &
-    exec dwm
+    startx /usr/local/bin/dwm-autostart -- :[tty you are currently on]
 
 
 Configuration
