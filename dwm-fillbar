@@ -33,9 +33,9 @@ getVPN()
 getNetwork()
 {
 	CONNAME=$(nmcli -t | grep 'Wired Connection' | awk '{print $1}')
-	if [ "$CONNAME" == "" ]; then
+	if [ "$CONNAME" = "" ]; then
 		CONNAME=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -c 5-)
-		if [ "$CONNAME" == "" ]; then
+		if [ "$CONNAME" = "" ]; then
 			echo "Offline"
 		else
 			IP=$(nmcli -a | grep 'inet4' | awk 'NR==1{print $2}' | cut -d '/' -f 1)
