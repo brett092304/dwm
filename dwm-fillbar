@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 getDate()
 {
 	echo "$(date "+%a %m-%d-%y %T")"
@@ -12,10 +11,10 @@ getAudio()
 	VOL=$(amixer get Master | tail -n1 | sed -r "s/.*\[(.*)%\].*/\1/")
 
 	if [ "$STATUS" = "off" ]; then
-                echo "Mute"
-        else
+    	echo "Mute"
+    else
 		echo "Vol: $VOL%"
-        fi
+    fi
 }
 
 getKB()
@@ -48,9 +47,30 @@ getNetwork()
 	fi
 }
 
+getBattery()
+{
+	BATCHARGE=$(cat /sys/class/power_supply/BAT0/capacity)
+	BATSTATUS=$(cat /sys/class/power_supply/BAT0/status)
+	if [ "$BATSTATUS" == "Charging" ]; then
+		if [ "$BATCHARGE" != "100" ]; then
+			echo "Charging $BATCHARGE%"
+		fi
+	else
+		echo "Bat: $BATCHARGE%"
+	fi
+}
+
+parallelize()
+{
+	while true
+	do
+		sleep 2
+	done
+}
+#parallelize &
+
 while true
 do
-	
 	xsetroot -name " $(getKB) | $(getAudio) |$(getVPN) $(getNetwork) | $(getDate)"
 	sleep 0.5
 done
