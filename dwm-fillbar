@@ -53,6 +53,14 @@ getBattery()
 	echo "Bat: $BATCHARGE%"
 }
 
+getBrightness()
+{
+	CURRENTBRIGHTNESS=$(cat /sys/class/backlight/intel_backlight/brightness)
+	MAXBRIGHTNESS=$(cat /sys/class/backlight/intel_backlight/max_brightness)
+	BRIGHTPERCENT=$(($CURRENTBRIGHTNESS*100/$MAXBRIGHTNESS))
+	echo "Brightness: $BRIGHTPERCENT%"
+}
+
 parallelize()
 {
 	while true
@@ -64,6 +72,6 @@ parallelize()
 
 while true
 do
-	xsetroot -name " $(getKB) | $(getAudio) | $(getBattery) |$(getVPN) $(getNetwork) | $(getDate)"
+	xsetroot -name " $(getKB) | $(getAudio) | $(getBattery) | $(getBrightness) |$(getVPN) $(getNetwork) | $(getDate)"
 	sleep 0.5
 done
