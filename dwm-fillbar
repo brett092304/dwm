@@ -75,6 +75,6 @@ parallelize()
 
 while true
 do
-	xsetroot -name " $(getKB) | $(getAudio) |$(getVPN) $(getNetwork) | $(getDate)"
+	xsetroot -name " $(getKB) | $(getAudio) | $(getRAM) |$(getVPN) $(getNetwork) | $(getDate)"
 	sleep 0.5
 done
