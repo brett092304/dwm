@@ -33,9 +33,9 @@ getVPN()
 getNetwork()
 {
 	CONNAME=$(nmcli -t | grep 'Wired Connection' | awk '{print $1}')
-	if [ "$CONNAME" == "" ]; then
+	if [ "$CONNAME" = "" ]; then
 		CONNAME=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -c 5-)
-		if [ "$CONNAME" == "" ]; then
+		if [ "$CONNAME" = "" ]; then
 			echo "Offline"
 		else
 			IP=$(nmcli -a | grep 'inet4' | awk 'NR==1{print $2}' | cut -d '/' -f 1)
@@ -51,6 +51,17 @@ getBattery()
 {
 	BATCHARGE=$(cat /sys/class/power_supply/BAT0/capacity)
 	echo "Bat: $BATCHARGE%"
+}
+
+getRAM()
+{
+	USEDRAM=$(free -h | sed '0,/ /s/ /X/' | awk 'NR==2{print $3}')
+	TOTALRAM=$(free -h | sed '0,/ /s/ /X/' | awk 'NR==2{print $2}')
+	RAMUSAGE="$USEDRAM/$TOTALRAM"
+	USEDSWAP=$(free -h | sed '0,/ /s/ /X/' | awk 'NR==3{print $3}')
+	TOTALSWAP=$(free -h | sed '0,/ /s/ /X/' | awk 'NR==3{print $2}')
+	SWAPUSAGE="$USEDSWAP/$TOTALSWAP"
+	echo "RAM: $RAMUSAGE | SWAP: $SWAPUSAGE"
 }
 
 parallelize()
