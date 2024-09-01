@@ -61,7 +61,12 @@ getRAM()
 	USEDSWAP=$(free -h | sed '0,/ /s/ /X/' | awk 'NR==3{print $3}')
 	TOTALSWAP=$(free -h | sed '0,/ /s/ /X/' | awk 'NR==3{print $2}')
 	SWAPUSAGE="$USEDSWAP/$TOTALSWAP"
-	echo "RAM: $RAMUSAGE | SWAP: $SWAPUSAGE"
+	
+	if ["$USEDSWAP" = "0B" ]; then
+		echo "RAM: $RAMUSAGE"
+	else
+		echo "RAM: $RAMUSAGE | SWAP: $SWAPUSAGE"
+	fi
 }
 
 getBrightness()
