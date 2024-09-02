@@ -65,6 +65,8 @@ static const char *mutevol[] = {"/usr/bin/pactl", "set-sink-mute", "@DEFAULT_SIN
 static const char *uskeyboard[] = {"/usr/bin/setxkbmap", "us", NULL };
 static const char *spanishkeyboard[] = {"/usr/bin/setxkbmap", "es", NULL };
 static const char *chrome[] = {"google-chrome", NULL };
+static const char *upbrightness[] = {"brightnessctl", "-q", "s", "+5%", NULL};
+static const char *downbrightness[] = {"brightnessctl", "-q", "s", "5%-", NULL};
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -98,9 +100,11 @@ static const Key keys[] = {
 	{0,                             XF86XK_AudioRaiseVolume, spawn,          {.v = upvol } },
 	{0,                             XF86XK_AudioLowerVolume, spawn,          {.v = downvol } },
 	{0,                             XF86XK_AudioMute,        spawn,          {.v = mutevol } },
+	{0,								XF86XK_MonBrightnessUp,  spawn,			 {.v = upbrightness } },
+	{0,								XF86XK_MonBrightnessDown,spawn,			 {.v = downbrightness } },
 
-	{ MODKEY|ShiftMask,             XK_s,                    spawn,          SHCMD("shutdown now") },
-	{ MODKEY|ShiftMask,             XK_r,                    spawn,          SHCMD("reboot") },
+	{ MODKEY|ShiftMask,             XK_s,                    spawn,          SHCMD("systemctl poweroff") },
+	{ MODKEY|ShiftMask,             XK_r,                    spawn,          SHCMD("systemctl reboot") },
 	{ MODKEY, 						XK_l, 					 spawn, 		 SHCMD("slock") },
 
 	TAGKEYS(                        XK_1,                      0)
