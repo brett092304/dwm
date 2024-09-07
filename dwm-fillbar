@@ -62,7 +62,7 @@ getRAM()
 	TOTALSWAP=$(free -h | sed '0,/ /s/ /X/' | awk 'NR==3{print $2}')
 	SWAPUSAGE="$USEDSWAP/$TOTALSWAP"
 	
-	if [ "$USEDSWAP" = "0B" ]; then
+	if [ "$USEDSWAP" = "0B" ] || [ "$USEDSWAP" = "0.0Ki" ]; then
 		echo "RAM: $RAMUSAGE"
 	else
 		echo "RAM: $RAMUSAGE | SWAP: $SWAPUSAGE"
