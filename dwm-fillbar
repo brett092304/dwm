@@ -39,11 +39,11 @@ getNetwork()
 			echo "Offline"
 		else
 			IP=$(nmcli -a | grep 'inet4' | awk 'NR==1{print $2}' | cut -d '/' -f 1)
-			echo "Wifi: $CONNAME $IP"
+			echo "Wifi: $CONNAME"
 		fi
 	else
 		IP=$(nmcli -a | grep 'inet4' | awk 'NR==1{print $2}' | cut -d '/' -f 1)
-		echo "$CONNAME $IP"
+		echo "$CONNAME"
 	fi
 }
 
