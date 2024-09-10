@@ -106,6 +106,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_s,                    spawn,          SHCMD("systemctl poweroff") },
 	{ MODKEY|ShiftMask,             XK_r,                    spawn,          SHCMD("systemctl reboot") },
 	{ MODKEY, 						XK_l, 					 spawn, 		 SHCMD("slock") },
+	{ MODKEY|ShiftMask,				XK_l, 					 spawn, 		 SHCMD("slock systemctl suspend") },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
