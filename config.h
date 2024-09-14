@@ -68,7 +68,7 @@ static const char *chrome[] = {"google-chrome", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_r,                    spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_x,                    spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return,               spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,                    togglebar,      {0} },
 	{ MODKEY,                       XK_Right,                focusstack,     {.i = +1 } },
@@ -102,6 +102,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_s,                    spawn,          SHCMD("shutdown now") },
 	{ MODKEY|ShiftMask,             XK_r,                    spawn,          SHCMD("reboot") },
 	{ MODKEY, 						XK_l, 					 spawn, 		 SHCMD("slock") },
+	{ MODKEY|ShiftMask, 			XK_l, 					 spawn, 		 SHCMD("slock systemctl suspend") },
 	{ MODKEY,						XK_s,					 spawn,			 SHCMD("flameshot gui") },
 
 	TAGKEYS(                        XK_1,                      0)
