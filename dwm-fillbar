@@ -36,14 +36,11 @@ getNetwork()
 	if [ "$CONNAME" = "" ]; then
 		CONNAME=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -c 5-)
 		if [ "$CONNAME" = "" ]; then
-			echo "Offline"
+			echo "Offline | "
 		else
 			IP=$(nmcli -a | grep 'inet4' | awk 'NR==1{print $2}' | cut -d '/' -f 1)
-			echo "Wifi: $CONNAME $IP"
+			echo "Wifi: $CONNAME"
 		fi
-	else
-		IP=$(nmcli -a | grep 'inet4' | awk 'NR==1{print $2}' | cut -d '/' -f 1)
-		echo "$CONNAME $IP"
 	fi
 }
 
@@ -88,6 +85,6 @@ parallelize()
 
 while true
 do
-	xsetroot -name " $(getKB) | $(getAudio) | $(getRAM) |$(getVPN) $(getNetwork) | $(getDate)"
+	xsetroot -name " $(getKB) | $(getAudio) | $(getRAM) |$(getVPN) $(getNetwork)$(getDate)"
 	sleep 0.5
 done

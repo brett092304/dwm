@@ -99,8 +99,8 @@ static const Key keys[] = {
 	{0,                             XF86XK_AudioLowerVolume, spawn,          {.v = downvol } },
 	{0,                             XF86XK_AudioMute,        spawn,          {.v = mutevol } },
 
-	{ MODKEY|ShiftMask,             XK_s,                    spawn,          SHCMD("shutdown now") },
-	{ MODKEY|ShiftMask,             XK_r,                    spawn,          SHCMD("reboot") },
+	{ MODKEY|ShiftMask,             XK_s,                    spawn,          SHCMD("systemctl poweroff") },
+	{ MODKEY|ShiftMask,             XK_r,                    spawn,          SHCMD("systemctl reboot") },
 	{ MODKEY, 						XK_l, 					 spawn, 		 SHCMD("slock") },
 	{ MODKEY|ShiftMask, 			XK_l, 					 spawn, 		 SHCMD("slock systemctl suspend") },
 	{ MODKEY,						XK_s,					 spawn,			 SHCMD("flameshot gui") },
