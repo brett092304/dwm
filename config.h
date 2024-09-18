@@ -70,7 +70,7 @@ static const char *downbrightness[] = {"brightnessctl", "-q", "s", "5%-", NULL};
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_r,                    spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_x,                    spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return,               spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,                    togglebar,      {0} },
 	{ MODKEY,                       XK_Right,                focusstack,     {.i = +1 } },
