@@ -80,9 +80,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Up,                   zoom,           {0} },
 	{ MODKEY,                       XK_Tab,                  view,           {0} },
 	{ MODKEY,                       XK_q,                    killclient,     {0} },
-	{ MODKEY,                       XK_t,                    setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,                    setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,                    setlayout,      {.v = &layouts[2]} },
+	{ MODKEY|ShiftMask,             XK_t,                    setlayout,      {.v = &layouts[0]} },
+	{ MODKEY|ShiftMask,             XK_f,                    setlayout,      {.v = &layouts[1]} },
+	{ MODKEY|ShiftMask,             XK_m,                    setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,                setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,                togglefloating, {0} },
 	{ MODKEY,                       XK_0,                    view,           {.ui = ~0 } },
@@ -104,6 +104,7 @@ static const Key keys[] = {
 	{ MODKEY, 						XK_l, 					 spawn, 		 SHCMD("slock") },
 	{ MODKEY|ShiftMask, 			XK_l, 					 spawn, 		 SHCMD("slock systemctl suspend") },
 	{ MODKEY,						XK_s,					 spawn,			 SHCMD("flameshot gui") },
+	{ MODKEY,						XK_f,					 spawn,			 SHCMD("thunar") },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
